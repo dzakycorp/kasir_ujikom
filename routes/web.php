@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\PenjualanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,15 +18,52 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/penjualan', function () {
+    return view('penjualan');
 });
-Route::get('/home', function () {
-    return view('home');
-});
-Route::get('/login', function () {
-    return view('login');
-});
+///Route::get('/home', function () {
+ //   return view('home');
+//});
+//Route::get('/update_produk', function () {
+  //  return view('update_produk');
+//});
 Route::get('/register', function () {
     return view('register');
 });
+
+Route ::get('/data_produk', [AdminController::class, 'datap']);
+
+Route ::get('/register', [PetugasController::class, 'regis']);
+Route ::post('/register',[PetugasController::class, 'daftar_petugas']);
+
+Route ::get('/login', [LoginController::class, 'index']);
+Route ::post('/login',[LoginController::class, 'login']);
+
+Route ::post('/tambah_produk', [AdminController::class, 'proses_tambah']);
+Route ::get('/tambah_produk', [AdminController::class, 'tambah_produk']);
+Route ::get('/hapus_produk/{id}', [AdminController::class,'hapus']);
+
+Route ::post('/update_produk/{id}', [AdminController::class, 'proses_update']);
+Route ::get('/update_produk/{id}', [AdminController::class, 'update']);
+
+Route ::get('/data_pelanggan', [PelangganController::class, 'datapel']);
+Route ::post('/tambah_pelanggan', [PelangganController::class, 'proses_tambahpel']);
+Route ::get('/tambah_pelanggan', [PelangganController::class, 'tambah_pelanggan']);
+Route ::get('/hapus_pelanggan/{id}', [PelangganController::class,'hapus']);
+Route ::post('/update_pelanggan/{id}', [PelangganController::class, 'proses_update']);
+Route ::get('/update_pelanggan/{id}', [PelangganController::class, 'updatepel']);
+
+Route ::get('/data_penjualan', [PenjualanController::class, 'data_penjualan']);
+Route ::get('/detail_penjualan/{id}', [PenjualanController::class, 'detail']);
+Route ::get('/penjualan', [PenjualanController::class, 'penjualan']);
+Route ::post('/penjualan', [PenjualanController::class, 'tambah']);
+Route::post('Checkout',[PenjualanController::class,'checkout']);
+
+
+
+
+
+
+
+
+

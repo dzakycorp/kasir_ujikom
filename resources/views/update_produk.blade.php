@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
     <title>Form Pendaftaran</title>
+   
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #033E3E;
+       
             margin: 0;
             display: flex;
             justify-content: center;
@@ -19,10 +21,11 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 400px;
             padding: 20px;
+
         }
 
-        .register-container h2 {
-            text-align: center;
+        .register-container h1 {
+            text-align: flex;
             color: #333;
         }
 
@@ -58,31 +61,32 @@
         }
     </style>
 </head>
+
 <body>
+
     <div class="register-container">
-        <h2>DAFTAR</h2>
-        <form action="/register" method="post">
+        <h2>UPDATE PRODUK</h2>
+        <form action="{{url('/update_produk',$produk->produk_id)}}" method="POST" enctype="multipart/form-data" >
         @method('post')
         @csrf
 
+        <div class="form-group">
+                <label for="nama_produk">Nama Produk</label>
+                <input type="text" id="nama_produk" name="nama_produk"  value="{{$produk->nama_produk}}" required>
+            </div>
+            <div class="form-group">
+                <label for="harga">Harga</label>
+                <input type="text" id="harga" name="harga" value="{{$produk->harga}}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">stok</label>
+                <input type="text" id="stok" name="stok" value="{{$produk->stok}}" required>
 
-            <div class="form-group">
-                <label for="nama">Nama</label>
-                <input type="text" id="nama" name="nama" required>
-            </div>
-            <div class="form-group">
-                <label for="email">username</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-         
-            <div class="form-group">
-                <button type="submit">Daftar</button>
-            </div>
+                <button type="submit" class="btn btn-outline-secondary">update</button>        
+           
         </form>
     </div>
 </body>
+
 </html>
+
