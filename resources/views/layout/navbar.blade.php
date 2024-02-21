@@ -13,10 +13,13 @@
             padding: 0;
             
             
+            
         }
 
         header {
-            background-color: #033E3E;
+            background-color: 	#000080;
+            height: 10vh;
+            width: 100%;
             padding: 10px 18px;
             display: flex;
             justify-content: space-between;
@@ -36,7 +39,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #033E3E;
+            background-color: #000080;
             box-shadow: #0000;
             z-index: 1;
         }
@@ -67,17 +70,19 @@
     <header>
     <div class="navbar-text">D-kasier</div>
         <div class="navbar">
-        <a href="#">tambah produk</a>
-            <a href="#">Beranda</a>
+        <a href="/penjualan">Penjualan</a>
+            <a href="/dashboard">Dashboard</a>
             <div class="dropdown">
                 <a href="#">Kategori</a>
                 <div class="dropdown-content">
                     <a href="/data_produk">data produk</a>
                     <a href="data_pelanggan">data pelanggan</a>
-                    <a href="/penjualan">penjualan</a>
                     <a href="/data_penjualan">data penjualan</a>
+                    <a href="/logout">logout</a>
                 </div>
             </div>
+            <!-- <button type="submit" class="btn btn-outline-danger" href="/logout">Logout</button> -->
+
           
         </div>
 

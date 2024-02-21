@@ -48,6 +48,10 @@ function tambah(Request $request ){
             'status'=>"pending"
         ]);
     }
+    ///stok&detail
+    if($produk->stok - $request->jumlah_produk< 0){
+      return redirect()->back()->with("info","Stok Tidak Cukup");
+    }else{
 
     $detail= DB::table('detail_penjualan')->insert([
         'penjualan_id' => $request->penjualan_id,
@@ -55,9 +59,10 @@ function tambah(Request $request ){
         'jumlah_produk'=> $request->qty,
         'subtotal'=> $request->qty * $produk->harga,
     ]);
+    DB::table('produk')->where('produk_id', $request->produk)->update(['stok'=>$produk->stok - $request->jumlah_produk]);
     
     return redirect()->back();
-}
+}}
 //data penjualan
 function data_penjualan(){
     $penjualan = DB::table('pelanggan')

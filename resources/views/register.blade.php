@@ -5,12 +5,16 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #033E3E;
+            
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-image: url('/img/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
         }
 
         .register-container {
@@ -45,7 +49,7 @@
 
         .form-group button {
             width: 100%;
-            background-color: #033E3E;
+            background-color: 	#000080;
             color: #fff;
             border: none;
             padding: 10px;
@@ -54,7 +58,7 @@
         }
 
         .form-group button:hover {
-            background-color: #033E3E;
+            background-color: 	#000080;
         }
     </style>
 </head>

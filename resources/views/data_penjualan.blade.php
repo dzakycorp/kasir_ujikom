@@ -7,12 +7,20 @@
     <link rel="stylesheet" href="bootstrap-5.3.1-dist/css/bootstrap.min.css">
    
 </head>
+<style>
+body {
+  background-image: url('/img/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
 
 <body>
 @include('layout.navbar')
 <br>
 
-<h1 style= "text-align:center; color:black">DATA PENJUALAN</h1>
+<h1 style= "text-align:center; color:white">DATA PENJUALAN</h1>
 
 <div class="container">
  
@@ -22,13 +30,13 @@
   <thead>
    
 </tr>
-    <tr>
+    <tr class="table-dark">
     
      
      <th scope="col"style="width:20%">TANGGAL</th>
       <th scope="col" style="width:25%"> NAMA PELANGGAN</th>
       <th scope="col"style="width:17%">TOTAL</th>
-      <th scope="col"style="width:25%">OPSI</th>
+      <th scope="col"style="width:10%">OPSI</th>
 
     </tr>
    

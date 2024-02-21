@@ -1,93 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  
-    <title>Form Pendaftaran</title>
-   
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-       
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .register-container {
-            
-            background-color: #fff;
-            border-radius: 7px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            padding: 20px;
-
-        }
-
-        .register-container h1 {
-            text-align: flex;
-            color: #333;
-        }
-
-        .form-group {
-            margin: 10px 0;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: bold;
-        }
-
-        .form-group input {
-            width: 375px;
-            height: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 7px;
-        }
-
-        .form-group button {
-            width: 100%;
-            background-color: #033E3E;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 7px;
-            cursor: pointer;
-        }
-
-        .form-group button:hover {
-            background-color: #033E3E;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
-
+<style>
+body {
+  background-image: url('/img/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
 <body>
-
-    <div class="register-container">
-        <h2>UPDATE PELANGGAN</h2>
-        <form action="{{url('/update_pelanggan',$pelanggan->pelanggan_id)}}" method="POST" enctype="multipart/form-data" >
+@include('layout.navbar')
+<div class="container">
+<h2 style= " color:white">UPDATE PELANGGAN</h2>
+<form action="{{url('/update_pelanggan',$pelanggan->pelanggan_id)}}" method="POST" enctype="multipart/form-data" >
         @method('post')
         @csrf
 
-        <div class="form-group">
-                <label for="nama_pelanggan">Nama Pelanggan</label>
-                <input type="text" id="nama_pelanggan" name="nama_pelanggan"  value="{{$pelanggan->nama_pelanggan}}" required>
-            </div>
-            <div class="form-group">
-                <label for="alamat">alamat</label>
-                <input type="text" id="alamat" name="alamat" value="{{$pelanggan->alamat}}" required>
-            </div>
-            <div class="form-group">
-                <label for="nomor_telepon">nomor telepon</label>
-                <input type="text" id="nomor_telepon" name="nomor_telepon" value="{{$pelanggan->nomor_telepon}}" required>
-
-                <button type="submit" class="btn btn-outline-secondary">update</button>        
-           
-        </form>
+  <div class="mb-3">
+    <label for="nabar" class="form-label" style="color:white">nama pelanggan</label>
+    <input type="text" class="form-control" id="nama" name="nama_pelanggan"  value="{{$pelanggan->nama_pelanggan}}" required style=width:30% >
     </div>
+    <div class="mb-3">
+    <label for="nabar" class="form-label" style="color:white">alamat pelanggan</label>
+    <input type="text" class="form-control" id="alamat" name="alamat" value="{{$pelanggan->alamat}}" required style=width:30% >
+    </div>
+    <div class="mb-3">
+    <label for="nabar" class="form-label" style="color:white">nomor telepon pelanggan</label>
+    <input type="text" class="form-control" id="nomor_telepon" name="nomor_telepon"value="{{$pelanggan->nomor_telepon}}" required style=width:30% >
+    </div>  
+    <button type="input" class="btn btn-primary"style="width:30%">tambahkan</button>
+
+
+</div>
 </body>
-
 </html>
-

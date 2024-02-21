@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\models\produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -30,10 +30,10 @@ class AdminController extends Controller
     ]);
     return redirect('/data_produk');
  }
- function hapus($id){
-  DB::table('produk')->where('produk_id','=',$id)->delete();
-  return redirect()->back();
- }
+//  function hapus($id){
+//   DB::table('produk')->where('produk_id','=',$id)->delete();
+//   return redirect()->back();
+ 
  function update($id){
   $produk = DB::table('produk')->where('produk_id','=', $id )->first();
   return view('/update_produk',['produk'=> $produk]);
@@ -52,6 +52,39 @@ function proses_update(request $request){
   return redirect('/data_produk');
 }
 
+function hapus($id){
+  $produk = produk::find($id);
+  $produk->delete($id);
+  $produk = DB::table('produk')->where('produk_id','=',$id)->update([
+      'status' => "terhapus",
+  ]);
+ 
+  return redirect()->back();
+}
+
+ function trash(request $request){
+ $produk = DB::table('produk')->where('status','terhapus')->get();
+
+
+ return view('/trash-produk',['produk'=>$produk]);
+}
+
+function restore(request $request ,$id){
+  $produk = produk::withTrashed()->find($id)->restore();
+  DB::table('produk')->where('produk_id','=',$id)->update([
+      'status' => "tampil",
+      'deleted_at' => NULL,
+  ]);
+  return redirect()->back();
+}
+
+function dashboard(){
+
+  return view ('/dashboard');
+
+
+
+}
 
 
 }

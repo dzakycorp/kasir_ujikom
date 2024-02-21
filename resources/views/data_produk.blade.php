@@ -7,21 +7,30 @@
     <link rel="stylesheet" href="bootstrap-5.3.1-dist/css/bootstrap.min.css">
    
 </head>
+<style>
+body {
+  background-image: url('/img/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
 
 <body>
+
 @include('layout.navbar')
 <br>
 
-<h1 style= "text-align:center; color:black">DATA PRODUK</h1>
+<h1 style= "text-align:center; color:white">DATA PRODUK</h1>
 
 <div class="container">
  
-    <table class="table table-bordered border-secondary">
+    <table class="table table-bordered ">
       
   <thead>
    
 </tr>
-    <tr>
+    <tr class="table-dark">
       
       <th scope="col" style="width:10%">ID PRODUK</th>
       <th scope="col">NAMA PRODUK</th>
@@ -36,7 +45,7 @@
     <tbody>
     @foreach ($produk as $produk)
     <tr>
-      <td>{{$produk->produk_id}}</td>
+      <td >{{$produk->produk_id}}</td>
       <td>{{$produk->nama_produk}}</td>
       <td>{{$produk->harga}}</td>
       <td>{{$produk->stok}}</td>
@@ -53,7 +62,7 @@
   
     @endforeach
 </table>
-<a href="/tambah_produk"><button type="button" class="btn btn-outline-dark"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+<a href="/tambah_produk"><button type="button" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
 </svg>tambah produk</button></a>
     

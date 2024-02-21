@@ -6,6 +6,14 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+<style>
+body {
+  background-image: url('/img/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
 
 <body>
 @include('layout.navbar')
@@ -13,10 +21,10 @@
         <BR>
         <div class="table-responsive">
             <table class="table table-bordered border-secondary">
-            <h1 style= "text-align:center; color:black">DETAIL PENJUALAN</h1>
+            <h1 style= "text-align:center; color:white">DETAIL PENJUALAN</h1>
  
                 <thead>
-                    <tr>
+                    <tr class="table-dark">
                         <th scope="col" style="text-align: center">Nama Produk</th>
                         <th scope="col" style="text-align: center">Harga</th>
                         <th scope="col" style="text-align: center">qty</th>
@@ -36,9 +44,9 @@
                 @endforeach
             </table>
         </div>
-        <h1> Total Harga : {{ number_format($detail->total_harga, 0, ',', '.') }}</h1>
+        <h1 style= "color:white"> Total Harga:Rp.{{ number_format($detail->total_harga, 0, ',', '.') }}</h1>
         <div>
-            <a href="{{ url('data_penjualan') }}" type="submit" class="btn btn-outline-dark"><svg
+            <a href="{{ url('data_penjualan') }}" type="submit" class="btn btn-primary"><svg
                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
