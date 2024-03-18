@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Form Pendaftaran</title>
     <style>
         body {
@@ -11,7 +12,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('/img/background.png');
+            background-image: url('https://i.ibb.co/yn6QSsV/background.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -61,6 +62,7 @@
             background-color: 	#000080;
         }
     </style>
+    
 </head>
 <body>
     <div class="register-container">
@@ -82,6 +84,13 @@
                 <label for="password">password</label>
                 <input type="password" id="password" name="password" required>
             </div>
+            <select class="form-select" aria-label="level" name="level">
+            <option selected>pilih level</option>
+            <option>admin</option>
+            <option>petugas</option>
+            
+            
+            </select>
          
             <div class="form-group">
                 <button type="submit">Daftar</button>

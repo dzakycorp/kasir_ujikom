@@ -5,10 +5,10 @@ use App\models\produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AdminController extends Controller
+class ProdukController extends Controller
 {
   function datap(){
-    $produk = DB::table('produk')->get();
+    $produk = DB::table('produk')->where('status','tampil')->get();
     return view('/data_produk',['produk'=>$produk]);
 
 
@@ -26,7 +26,8 @@ class AdminController extends Controller
     $tambah = DB::table('produk')->insert([
       'nama_produk'=>$nama_produk,
       'harga'=>$harga,
-      'stok'=>$stok
+      'stok'=>$stok,
+      'status' => 'tampil'
     ]);
     return redirect('/data_produk');
  }
@@ -35,7 +36,7 @@ class AdminController extends Controller
 //   return redirect()->back();
  
  function update($id){
-  $produk = DB::table('produk')->where('produk_id','=', $id )->first();
+  $produk = DB::table('produk')->where('id','=', $id )->first();
   return view('/update_produk',['produk'=> $produk]);
 
 }
@@ -43,10 +44,11 @@ function proses_update(request $request){
   $nama_produk = $request->nama_produk;
   $harga = $request->harga;
   $stok = $request->stok;
-  $produk = DB::table('produk')->where('produk_id',$request->id)->update([
+  $produk = DB::table('produk')->where('id',$request->id)->update([
       'nama_produk' => $nama_produk,
       'harga' => $harga,
       'stok' => $stok
+      
 
   ]);
   return redirect('/data_produk');
@@ -54,8 +56,8 @@ function proses_update(request $request){
 
 function hapus($id){
   $produk = produk::find($id);
-  $produk->delete($id);
-  $produk = DB::table('produk')->where('produk_id','=',$id)->update([
+  // $produk->delete($id);
+  $produk = DB::table('produk')->where('id','=',$id)->update([
       'status' => "terhapus",
   ]);
  
@@ -66,12 +68,12 @@ function hapus($id){
  $produk = DB::table('produk')->where('status','terhapus')->get();
 
 
- return view('/trash-produk',['produk'=>$produk]);
+ return view('/sampah',['produk'=>$produk]);
 }
 
 function restore(request $request ,$id){
   $produk = produk::withTrashed()->find($id)->restore();
-  DB::table('produk')->where('produk_id','=',$id)->update([
+  DB::table('produk')->where('id','=',$id)->update([
       'status' => "tampil",
       'deleted_at' => NULL,
   ]);
@@ -80,11 +82,19 @@ function restore(request $request ,$id){
 
 function dashboard(){
 
-  return view ('/dashboard');
-
-
-
-}
-
+  $admin = DB::table('admin')->get();
+  $total_admin = count ($admin);
+  
+  $produk = DB::table('produk')->get();
+  $total_produk = count ($produk);
+  
+  $pelanggan = DB::table('pelanggan')->get();
+  $total_pelanggan = count ($pelanggan);
+  
+  $penjualan = DB::table('penjualan')->get();
+  $total_penjualan = count ($penjualan);
+  
+      return view('dashboard', ['total_admin' => $total_admin, 'total_produk' => $total_produk, 'total_pelanggan' => $total_pelanggan, 'total_penjualan' => $total_penjualan]);
+    }
 
 }

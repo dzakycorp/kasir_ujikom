@@ -9,7 +9,7 @@ use App\models\Admin;
 class PenjualanController extends Controller
 {
   function penjualan (){
-    $produk = DB::table('produk')->get();
+    $produk = DB::table('produk')->where('status','tampil')->get();
 
     $pelanggan = DB::table('pelanggan')->get();
 
@@ -29,14 +29,14 @@ class PenjualanController extends Controller
     }
 
      $detailpenjualan=DB::table('produk')->where("penjualan_id", $penjualan_id)
-    ->join("detail_penjualan","produk.produk_id","=",'detail_penjualan.produk_id')
+    ->join("detail_penjualan","produk.id","=",'detail_penjualan.produk_id')
     ->get();
 
     return view ('/penjualan',['produk'=>$produk,'pelanggan'=>$pelanggan ,'penjualan_id' => $penjualan_id,'detailpenjualan'=>$detailpenjualan]);
 }
 //tambah panjualan
 function tambah(Request $request ){
-    $produk = DB::table('produk')->where('Produk_id', $request->produk)->first();
+    $produk = DB::table('produk')->where('id', $request->produk)->first();
 
     $dataPenjualan = DB::table('penjualan')->where('penjualan_id', $request->penjualan_id)->first();
     if(!$dataPenjualan){
@@ -49,8 +49,8 @@ function tambah(Request $request ){
         ]);
     }
     ///stok&detail
-    if($produk->stok - $request->jumlah_produk< 0){
-      return redirect()->back()->with("info","Stok Tidak Cukup");
+    if($produk->stok - $request->qty< 0){
+      return redirect()->back()->with("alert","Stok Kurang");
     }else{
 
     $detail= DB::table('detail_penjualan')->insert([
@@ -59,7 +59,7 @@ function tambah(Request $request ){
         'jumlah_produk'=> $request->qty,
         'subtotal'=> $request->qty * $produk->harga,
     ]);
-    DB::table('produk')->where('produk_id', $request->produk)->update(['stok'=>$produk->stok - $request->jumlah_produk]);
+    DB::table('produk')->where('id', $request->produk)->update(['stok'=>$produk->stok - $request->qty]);
     
     return redirect()->back();
 }}
@@ -74,7 +74,7 @@ function data_penjualan(){
 
 function detail(Request $request ,$id){
   $detail = DB::table('detail_penjualan')
-  ->join('produk', 'produk.produk_id', '=' ,'detail_penjualan.produk_id')
+  ->join('produk', 'produk.id', '=' ,'detail_penjualan.produk_id')
   ->join('penjualan','penjualan.penjualan_id','=','detail_penjualan.penjualan_id')
   ->where('detail_penjualan.penjualan_id', $id)
   ->get();
@@ -82,11 +82,41 @@ function detail(Request $request ,$id){
   return view('detail_penjualan',['detail'=> $detail]);
 }
 
+
 function checkout(Request $request){
   $update=DB::table('penjualan')->where('penjualan_id',$request->penjualan_id)->update([
       'status'=>"selesai",
       'total_harga'=> $request->total,
   ]);
+  return redirect()->back();
+}
+public function cetakStruk(Request $request, $id)
+{
+    
+    $count =DB::table('detail_penjualan')->where('penjualan_id',$id)->sum('jumlah_produk');
+
+    $penjualan = DB::table('penjualan')
+        ->where('penjualan_id', $id)
+        ->first();
+
+    $detail = DB::table('detail_penjualan')
+        ->join('produk', 'produk.id', '=', 'detail_penjualan.produk_id')
+        ->where('detail_penjualan.penjualan_id', $id)
+        ->get();
+
+        $percobaan = DB::table('penjualan')
+        ->join('pelanggan', 'pelanggan.pelanggan_id', '=', 'penjualan.pelanggan_id')
+        ->get();
+    
+    return view('struk', ['detail' => $detail, 'penjualan' => $penjualan,'count'=>$count,'percobaan'=>$percobaan]);
+}
+
+function hapus_penjualan(request $request, $id){
+  $datapenjualan = DB::table('detail_penjualan')->where('produk_id', '=', $id)->first();
+  $produk = DB::table('produk')->where('id', $id)->first();
+
+  DB::table("produk")->where('id', $id)->update(['stok' => $produk->stok + $datapenjualan->jumlah_produk]);
+  DB::table('detail_penjualan')->where('produk_id', '=', $id)->delete();
   return redirect()->back();
 }
 

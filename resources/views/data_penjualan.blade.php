@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>data penjualan</title>
     <link rel="stylesheet" href="bootstrap-5.3.1-dist/css/bootstrap.min.css">
    
 </head>
 <style>
 body {
-  background-image: url('/img/background.png');
+  background-image: url('https://i.ibb.co/yn6QSsV/background.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -24,7 +24,7 @@ body {
 
 <div class="container">
  
-    <table class="table table-bordered border-secondary">
+    <table class="table table-bordered">
     
       
   <thead>

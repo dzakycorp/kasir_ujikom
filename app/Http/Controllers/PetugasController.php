@@ -13,7 +13,7 @@ class PetugasController extends Controller
         $nama = $request->nama;
         $username = $request->username;
         $password = $request->password;
-        
+        $level = $request->level;
       
        
         $admin = DB::table('admin')->insert([
@@ -21,7 +21,7 @@ class PetugasController extends Controller
             'nama' => $nama,
             'username' => $username,
             'password' => Hash::make ($password),
-           
+            'level' => $level,
             
         ]);
 
@@ -31,14 +31,14 @@ class PetugasController extends Controller
         return view('/register');
     }
 
-    function penjualan(){
-        $pelanggan = DB::table('pelanggan')->get();
-        $produk = DB::table('produk')->get();
-        return $produk;
+    // function penjualan(){
+    //     $pelanggan = DB::table('pelanggan')->get();
+    //     $produk = DB::table('produk')->get();
+    //     return $produk;
 
     
         
     }    
 
  
-}
+// }
