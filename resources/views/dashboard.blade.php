@@ -94,7 +94,6 @@
     <nav class="navbar">
       <ul>
         <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="/logout">Logout</a></li>
       </ul>
     </nav>
   </header>
@@ -105,13 +104,14 @@
       <li><a href="/data_produk">DATA PRODUK</a></li>
       <li><a href="/data_pelanggan">DATA PELANGGAN</a></li>
       <li><a href="/data_penjualan">DATA PENJUALAN</a></li>
+      <li><a href="/logout">LOGOUT</a></li>
     </ul>
   </div>
 
   <div class="content">
  
   <div style="display:flex;">
-        <div class="card" style="width: 18rem; margin-right:2%; border-radius:10px;">
+        <div class="card" style="width: 18rem; margin-right:5%; border-radius:10px;">
         <div class="card-body" style="background-color: #000030; border-radius:10px;">
             <h5 style="color:white;" class="card-title">Data pelanggan</h5>
             <p class="card-text">
@@ -119,11 +119,11 @@
             <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
             </svg> 
             </p>
-            <a href="/data_pelanggan" style="color:white; text-decoration:none;">More
+            <h3 style="color:white;">{{$total_penjualan}}</h3>
+            <a href="/data_pelanggan" style="color:white; text-decoration:none;">More Info
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
             <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1"/>
             </svg>
-           <h3>{{$total_pelanggan}}</h3>
             </a>
             </div>
         </div>
@@ -136,16 +136,17 @@
             <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
             </svg>
             </p>
-            <a href="/data_produk" style="color:white; text-decoration:none;">More
+            <h3 style="color:white;">{{$total_produk}}</h3>
+            <a href="/data_produk" style="color:white; text-decoration:none;">More Info
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
             <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1"/>
             </svg>
-            <h3>{{$total_produk}}</h3>
+          
         </a>
         </div>
     </div>
 
-    <div class="card" style="width: 18rem; margin-left:2%; border-radius:10px;">
+    <div class="card" style="width: 18rem; margin-left:5%; border-radius:10px;">
         <div class="card-body" style="background-color: #000030; border-radius:10px;">
             <h5 style="color:white;" class="card-title">Data penjualan</h5>
             <p class="card-text">
@@ -157,20 +158,22 @@
         </svg>
         
             </p>
-            <a href="data_penjualan" style="color:white; text-decoration:none;">More
+            <h3 style="color:white;">{{$total_penjualan}}</h3>
+            <a href="data_penjualan" style="color:white; text-decoration:none;">More Info
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
         <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1"/>
         </svg>
-        <h3>{{$total_penjualan}}</h3>
+      
         </a>
         </div>
     </div>
   </div>
   <br><br>
+  @if (session('nama'))
   <div class="alert alert-primary" role="alert" id="alert" style="text-align: center; width:30%; margin:auto">
-    Selamat Datang! di dashboard
+   selamat datang {{ session('nama') }}
   </div>
-
+@endif
   <script>
     // Mengambil elemen alert
     var alertBox = document.getElementById("alert");

@@ -72,9 +72,8 @@
 <body>
     <div class="login-container">
     @if (session()->has('alert'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert" >
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alert">
     {{ session('alert') }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
     @endif
         <h2>LOGIN</h2>
@@ -96,6 +95,18 @@
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+    // Mengambil elemen alert
+    var alertBox = document.getElementById("alert");
+
+    // Menampilkan alert
+    alertBox.style.display = "block";
+
+    // Menyembunyikan alert setelah 5 detik
+    setTimeout(function() {
+      alertBox.style.display = "none";
+    }, 3000); // 5000 milidetik atau 5 detik
+  </script>
  
 </body>
 </html>

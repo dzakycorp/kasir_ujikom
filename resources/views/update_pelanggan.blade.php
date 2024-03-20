@@ -34,7 +34,7 @@ body {
     <label for="nabar" class="form-label" style="color:white">nomor telepon pelanggan</label>
     <input type="text" class="form-control" id="nomor_telepon" name="nomor_telepon"value="{{$pelanggan->nomor_telepon}}" required style=width:30% >
     </div>  
-    <button type="input" class="btn btn-primary"style="width:30%">tambahkan</button>
+    <button type="input" class="btn btn-primary"style="width:30%">Update</button>
     <br><br>
     <div>
             <a href="{{ url('data_pelanggan') }}" type="submit" class="btn btn-primary"><svg

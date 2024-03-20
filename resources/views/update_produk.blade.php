@@ -34,7 +34,7 @@ body {
     <label for="nabar" class="form-label" style="color:white">stok</label>
     <input type="text" class="form-control" id="stok" name="stok"value="{{$produk->stok}}"required style=width:30% >
     </div>  
-    <button type="input" class="btn btn-primary"style="width:30%">tambahkan</button>
+    <button type="input" class="btn btn-primary"style="width:30%">Update</button>
     <br><br>
     <div>
             <a href="{{ url('data_produk') }}" type="submit" class="btn btn-primary"><svg
